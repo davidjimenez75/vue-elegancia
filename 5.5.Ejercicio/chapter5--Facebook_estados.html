@@ -1,0 +1,100 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>The Elections</title>
+</head>
+<body>
+<div class="container">
+    <h1>Propuestas</h1>
+    <ul class="list-group">
+        <li v-for="propuesta in propuestas" class="list-group-item">
+            <h3>{{propuesta.propuesta}}</h3>
+            <button class="btn btn-primary btn-xs" @click="propuesta.megusta++">{{propuesta.megusta}} me gusta</button>
+            <button class="btn btn-success btn-xs" @click="propuesta.meencanta++">{{propuesta.meencanta}} me encanta</button>
+            <button class="btn btn-info btn-xs" @click="propuesta.medivierte++">{{propuesta.medivierte}} me divierte</button>
+            <button class="btn  btn-xs" @click="propuesta.measombra++">{{propuesta.measombra}} me asombra</button>
+            <button class="btn btn-warning btn-xs" @click="propuesta.meentristece++">{{propuesta.meentristece}} me entristece</button>
+            <button class="btn btn-danger btn-xs" @click="propuesta.meenfada++">{{propuesta.meenfada}} me enfada</button>
+        </li>
+    </ul>
+    <!-- listening for keyboard event -->
+    <input @keyup.delete="clear" class="form-control" placeholder="press 'delete' to reset "></input>
+    <!-- display the name of the 'mayor' using a computed property-->
+    <h2>La favorita es la {{mayor.propuesta}}!</h2>
+    <pre>{{ $data }}</pre>
+    <pre>{{ mayor }}</pre>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '.container',
+        data: {
+            propuestas: [
+                {
+                    propuesta: "Propuesta 1",
+                    megusta: 0,
+                    meencanta: 0,
+                    medivierte: 0,
+                    measombra: 0,
+                    meentristece: 0,
+                    meenfada: 0
+                },
+                {
+                    propuesta: "Propuesta 2",
+                    megusta: 0,
+                    meencanta: 0,
+                    medivierte: 0,
+                    measombra: 0,
+                    meentristece: 0,
+                    meenfada: 0
+                },
+                {
+                    propuesta: "Propuesta 3",
+                    megusta: 0,
+                    meencanta: 0,
+                    medivierte: 0,
+                    measombra: 0,
+                    meentristece: 0,
+                    meenfada: 0
+                },
+                {
+                    propuesta: "Propuesta 4",
+                    megusta: 0,
+                    meencanta: 0,
+                    medivierte: 0,
+                    measombra: 0,
+                    meentristece: 0,
+                    meenfada: 0
+                }
+            ]
+        },
+        computed: {
+            mayor: function () {
+                //first we sort the array descending
+                var candidatesSorted = this.propuestas.sort(function (a, b) {
+                    return b.megusta - a.megusta;
+                });
+                //the mayor will be the first item
+                return candidatesSorted[0];
+            }
+        },
+        methods: {
+            //this method runs when the key 'delete' is pressed
+            clear: function () {
+                //Turn votes of all candidate to 0 using map() function.
+                this.propuestas = this.propuestas.map(function (propuesta) {
+                    propuesta.megusta = 0;
+                    propuesta.meencanta = 0;
+                    propuesta.medivierte = 0;
+                    propuesta.measombra = 0;
+                    propuesta.meentristece = 0;
+                    propuesta.meenfada = 0;
+
+                    return propuesta;
+                })
+            }
+        }
+    })
+</script>
+</html>

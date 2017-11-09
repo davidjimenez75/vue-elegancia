@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Hello Vue</title>
+</head>
+<body>
+    <div class="container">
+        <h1 v-if="number">The multiplication table of {{ number }}</h1>
+        <h1 v-else>Insert a number:</h1>
+        <input v-model="number">
+        <ul v-if="number != 0" class="list-group">
+            <li v-for="i in 10" class="list-group-item">
+                {{ i }} times 4 equals {{ i * number }}.
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+		data: {
+		number: ""
+		}
+    })
+</script>
+</html>

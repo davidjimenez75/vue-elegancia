@@ -1,0 +1,71 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>The Elections</title>
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1>People of Vue </h1>
+
+    <ul class="list-group">
+        <li v-for="candidate in candidates" class="list-group-item">
+            <button class="btn btn-info" @click="candidate.votes++">Vote</button>
+
+            {{candidate.name}} ({{candidate.votes}} votes)
+            <!-- increase votes 'on:click'-->
+
+
+        </li>
+    </ul>
+    <!-- listening for keyboard event -->
+
+    <button class="btn btn-danger btn-sm float-right" @click="clear">clear</button>
+
+    <!-- display the name of the 'mayor' using a computed property-->
+    <h2 v-if="(candidates[0]['votes']!=0)">Our mayor is <strong>{{mayor.name}}</strong>!</h2>
+    <h2 v-else>
+        <hr>
+    </h2>
+
+    <pre>{{ $data }}</pre>
+    <pre>{{ mayor }}</pre>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '.container',
+        data: {
+            candidates: [
+                {name: "Mr. Black", votes: 0},
+                {name: "Mr. White", votes: 0},
+                {name: "Mr. Pink", votes: 0},
+                {name: "Mr. Brown", votes: 0},
+            ]
+        },
+        computed: {
+            mayor: function () {
+                //first we sort the array descending
+                var candidatesSorted = this.candidates.sort(function (a, b) {
+                    return b.votes - a.votes;
+                });
+                //the mayor will be the first item
+                return candidatesSorted[0];
+            }
+        },
+        methods: {
+            //this method runs when the key 'delete' is pressed
+            clear: function () {
+                //Turn votes of all candidate to 0 using map() function.
+                this.candidates = this.candidates.map(function (candidate) {
+                    candidate.votes = 0;
+                    return candidate;
+                })
+            }
+        }
+    })
+</script>
+</html>

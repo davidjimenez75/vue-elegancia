@@ -1,0 +1,78 @@
+<html>
+<head>
+  <title>Calculator</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Type 2 numbers and choose operation.</h1>
+    <form class="form-inline">
+      <!-- Notice here the special attribute 'number'
+      is passed in order to parse inputs as numbers.-->
+<!--       <input v-model.number="a"  class="form-control" size="2"> --->
+      
+      <select v-model.number="a" class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>                                        
+      </select>
+      
+      
+      <select v-model="operator" class="form-control">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+      </select>
+      <!-- Notice here the special attribute 'number'
+      is passed in order to parse inputs as numbers.-->
+      
+      <input v-model.number="b" class="form-control" size="2"> = 
+      
+      <input v-model.number="c" class="form-control" disabled size="2">
+  </form>
+  <h4>Result: {{a}}  {{operator}}  {{b}} = {{c}}</h4>
+
+<hr>
+
+  <pre>
+    {{ $data }}
+  </pre>
+</div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+<script type="text/javascript">
+new Vue({
+  el: '.container',
+  data: {
+    a: 6,
+    b: 3,
+    operator: "+",
+  },
+  computed: {
+    c: function () {
+      switch (this.operator) {
+        case "+":
+        return this.a + this.b
+        break;
+        case "-":
+        return this.a - this.b
+        break;
+        case "*":
+        return this.a * this.b
+        break;
+        case "/":
+        return this.a / this.b
+        break;
+      }
+    }
+  },
+});
+</script>
+</html>
