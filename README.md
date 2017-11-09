@@ -1,14 +1,15 @@
-# vuebox
-Sandbox for learning Vue.
+# La-Elegancia-de-Vue.js-2
+
+Sandbox for the book "La Elegancia de Vue.js 2", spanish version from the "The Majesty of Vue.js 2" book.
+
 
 ## INSTALATION
 
 Download from GitHub and install dependencies with bower.
 
 ```bash
-$ bower install
+bower install
 ```
-
 
 ## FAQ
 
