@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16"/>
 
 
-    <title>VueBox</title>
+    <title>La Elegancia de Vue.js 2</title>
 
     <!--bower_Bootstrap4a6_css-->
     <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
@@ -32,27 +32,32 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">VueBox</a>
+        <a class="navbar-brand" href="#">La Elegancia de Vue.js 2</a>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="https://leanpub.com/vuejs2-spanish" target="_blank">Libro</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://vuejs.org/v2/guide/" target="_blank">Vue.js 2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://vuex.vuejs.org/en/" target="_blank">Vuex</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://v4-alpha.getbootstrap.com/getting-started/introduction/"
-                       target="_blank">Bootstrap 4</a>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
                        aria-haspopup="true"
-                       aria-expanded="false">Examples</a>
+                       aria-expanded="false">Documentación </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="https://vuejs.org/v2/guide/" target="_blank">Vue.js 2</a>
+                        <a class="dropdown-item" href="https://vuex.vuejs.org/en/" target="_blank">Vuex</a>
+                        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/getting-started/introduction/"
+                           target="_blank">Bootstrap
+                            4</a>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">Ejemplos</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item" href="https://vuejs.org/v2/examples/" target="_blank">Vue.js 2</a>
                         <a class="dropdown-item" href="https://vuex.vuejs.org/en/getting-started.html"
@@ -63,8 +68,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" @submit.prevent="search(searchstr)">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" v-model="searchstr">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar..." v-model="searchstr">
             </form>
         </div>
     </nav>
@@ -76,7 +80,7 @@
             <table class="table table-hover mytable">
                 <tbody id="list">
 
-                <tr v-for="(value, index) in dirs"  v-bind:class="value.visible">
+                <tr v-for="(value, index) in dirs" v-bind:class="value.visible">
                     <th>
                         <small v-bind:class="thClassValue(value.status)">&nbsp;&nbsp;{{index+1}}&nbsp;&nbsp;</small>
                         <a v-bind:href="value.dir">{{ value.dir }}</a>
@@ -154,7 +158,7 @@
                 $a_dirs[$key]["visible"] = "visible";
 
                 // DESCRIPTIONS FOR EVERY FOLDER
-                $description_file="index.txt";
+                $description_file = "index.txt";
                 if (file_exists("./" . $value["dir"] . "/$description_file")) {
                     $a_dirs[$key]["description"] = file_get_contents("./" . $value["dir"] . "/$description_file");
                 }
@@ -188,10 +192,10 @@
             search: function (searchstr) {
                 //console.log("DEBUG methods search:" + searchstr);
                 //this.dirs[0]['dir']="kk";
-                return this.dirs.map(function (element){
-                    if (element.dir.search(searchstr)==-1) {
-                        return element.visible= "d-none"; // invisible? small? d-none?
-                    }else {
+                return this.dirs.map(function (element) {
+                    if (element.dir.search(searchstr) == -1) {
+                        return element.visible = "d-none"; // invisible? small? d-none?
+                    } else {
                         return element.visible = "visible";
                     }
                 })
