@@ -7,18 +7,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32"/>
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16"/>
+    <link rel="icon" href="./images/favicon.ico">
+    <link rel="icon" type="image/png" href="./images/favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="./images/favicon-16x16.png" sizes="16x16"/>
 
 
     <title>La Elegancia de Vue.js 2</title>
 
     <!--bower_Bootstrap4a6_css-->
-    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="/css/starter-template.css" rel="stylesheet">
+    <link href="./css/starter-template.css" rel="stylesheet">
 
 
 </head>
@@ -102,12 +102,12 @@
 <!-- Placed at the end of the document so the pages load faster -->
 
 <!--BOOTSTRAP-->
-<script src="/vendor/jquery/dist/jquery.slim.min.js"></script>
-<script src="/vendor/tether/dist/js/tether.min.js"></script>
-<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./vendor/jquery/dist/jquery.slim.min.js"></script>
+<script src="./vendor/tether/dist/js/tether.min.js"></script>
+<script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!--VUE-->
-<script src="/vendor/vue/dist/vue.js"></script>
+<script src="./vendor/vue/dist/vue.js"></script>
 
 <!--VUE-RESOURCE-->
 <!-- <script src="/vendor/vue-resource/dist/vue-resource.js"></script> -->

@@ -8,6 +8,18 @@ Sandbox for the book "La Elegancia de Vue.js 2", spanish version from the "The M
 Download from GitHub and install dependencies with bower.
 
 ```bash
+yarn add axios
+yarn add bootstrap
+yarn add vue
+yarn add vuex
+yarn add vue-resource
+
+yarn install
+```
+
+### DEPRECATED
+
+```bash
 bower install
 ```
 
