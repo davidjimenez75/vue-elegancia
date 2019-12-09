@@ -3,9 +3,15 @@
 Sandbox for the book "La Elegancia de Vue.js 2", spanish version from the "The Majesty of Vue.js 2" book.
 
 
-## INSTALLATION
+## INSTALLATION WITH YARN
 
-Download from GitHub and install dependencies with yarn.
+Clone repo from GitHub:
+
+```bash
+sudo -u www-data git clone https://github.com/davidjimenez75/vue-elegancia.git
+```
+
+Install dependencies with Yarn:
 
 ```bash
 sudo -u www-data yarn add axios bootstrap vue vuex vue-resource
@@ -19,20 +25,37 @@ sudo -u www-data yarn install
 Install dependencies with bower.
 
 ```bash
-bower install
+sudo -u www-data bower install
 ```
 
 
 
 ## FAQ
 
-### How can install Yarn in Debian/Ubuntu?
+### How install Yarn in Debian/Ubuntu?
+
+YARN - STABLE VERSION:
+
+https://yarnpkg.com/en/docs/install#debian-stable
+
+```
+apt install curl
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+yarn -v
+```
+
+YARN - RELEASE CANDIDATE:
+
+https://yarnpkg.com/en/docs/install#debian-rc
 
 ```
 apt install curl
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ rc main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install yarn
+yarn -v
 ```
 
 ### Add color to folders?
