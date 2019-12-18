@@ -5,6 +5,9 @@ Sandbox for the book "La Elegancia de Vue.js 2", spanish version from the "The M
 
 ## INSTALLATION WITH YARN
 
+
+### LINUX
+
 Clone repo from GitHub:
 
 ```bash
@@ -19,6 +22,21 @@ sudo -u www-data yarn install
 ```
 
 
+### WINDOWS
+
+Clone repo from GitHub:
+
+```
+git clone https://github.com/davidjimenez75/vue-elegancia.git
+```
+
+Install dependencies with Yarn:
+
+```
+yarn add axios bootstrap vue vuex vue-resource
+yarn install
+```
+
 
 ### BOWER INSTALLATION (DEPRECATED)
 
@@ -27,6 +45,9 @@ Install dependencies with bower.
 ```bash
 sudo -u www-data bower install
 ```
+
+
+
 
 
 
