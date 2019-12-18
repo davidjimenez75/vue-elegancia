@@ -1,0 +1,8 @@
+{
+  "name": "vue-elegancia",
+  "version": "1.0.0",
+  "main": "index.php",
+  "repository": "https://github.com/davidjimenez75/vue-elegancia",
+  "author": "David Jiménez <davidjimenez75@gmail.com>",
+  "license": "MIT"
+}
