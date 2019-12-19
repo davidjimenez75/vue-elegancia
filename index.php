@@ -130,7 +130,7 @@
             $descriptionFile = "index.txt";
 
             $a_bg = array('primary', 'success', 'warning', 'danger', 'info', 'muted');
-            $ignoredFolders = array('.', '..', '.git', '.idea', '.svn', 'css', 'images', 'js', 'vendor', 'images');
+            $ignoredFolders = array('.', '..', '.git', '.idea', '.svn', 'css', 'images', 'js', 'vendor', 'images', 'node_modules');
 
             foreach (glob('*', GLOB_ONLYDIR) as $dir) {
 
