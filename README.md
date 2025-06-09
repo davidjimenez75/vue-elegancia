@@ -1,9 +1,12 @@
-# La-Elegancia-de-Vue.js-2
+# vue-elegancia
 
-Sandbox for the book "La Elegancia de Vue.js 2", spanish version from the "The Majesty of Vue.js 2" book.
+Sandbox for the book "La Elegancia de Vue.js 3", spanish version from the "The Majesty of Vue.js 3" book.
+
+- https://leanpub.com/vuejs3
 
 
-## INSTALLATION WITH YARN
+
+## INSTALLATION OF DEPENDENCIES WITH YARN
 
 
 ### LINUX
