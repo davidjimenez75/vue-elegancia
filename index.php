@@ -12,10 +12,10 @@
     <link rel="icon" type="image/png" href="./images/favicon-16x16.png" sizes="16x16"/>
 
 
-    <title>La Elegancia de Vue.js 2</title>
+    <title>La Elegancia de Vue.js 3</title>
 
-    <!--bower_Bootstrap4a6_css-->
-    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
+    <!--Bootstrap CSS from node_modules-->
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
     <link href="./css/starter-template.css" rel="stylesheet">
@@ -32,7 +32,7 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">La Elegancia de Vue.js 2</a>
+        <a class="navbar-brand" href="#">La Elegancia de Vue.js 3</a>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
@@ -102,79 +102,75 @@
 <!-- Placed at the end of the document so the pages load faster -->
 
 <!--BOOTSTRAP-->
-<script src="./vendor/jquery/dist/jquery.slim.min.js"></script>
-<script src="./vendor/tether/dist/js/tether.min.js"></script>
-<script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!--VUE-->
-<script src="./vendor/vue/dist/vue.js"></script>
+<script src="./node_modules/vue/dist/vue.global.js"></script>
 
-<!--VUE-RESOURCE-->
-<!-- <script src="/vendor/vue-resource/dist/vue-resource.js"></script> -->
+<!--VUE-RESOURCE (removed - not compatible with Vue 3, use axios instead)-->
 
 <!--VUEX-->
-<!-- <script src="/vendor/vuex/dist/vuex.js"></script> -->
+<script src="./node_modules/vuex/dist/vuex.global.js"></script>
 
 <!--AXIOS-->
-<!-- <script src="/vendor/axios/dist/axios.js"></script> -->
+<script src="./node_modules/axios/dist/axios.min.js"></script>
 
 <!--main-->
 <script type="text/javascript">
-    new Vue({
-        el: '#app',
-        data: {
-            searchstr: "",
-            dirs: <?php
-            // GET DIRECTORY TO VUE 2 DATA ARRAY
-            $dir = '.';
-            $descriptionFile = "index.txt";
+    const { createApp } = Vue;
+    
+    const app = createApp({
+        data() {
+            return {
+                searchstr: "",
+                dirs: <?php
+                // GET DIRECTORY TO VUE 3 DATA ARRAY
+                $dir = '.';
+                $descriptionFile = "index.txt";
 
-            $a_bg = array('primary', 'success', 'warning', 'danger', 'info', 'muted');
-            $ignoredFolders = array('.', '..', '.git', '.idea', '.svn', 'css', 'images', 'js', 'vendor', 'images', 'node_modules');
+                $a_bg = array('primary', 'success', 'warning', 'danger', 'info', 'muted');
+                $ignoredFolders = array('.', '..', '.git', '.idea', '.svn', 'css', 'images', 'js', 'vendor', 'images', 'node_modules');
 
-            foreach (glob('*', GLOB_ONLYDIR) as $dir) {
+                foreach (glob('*', GLOB_ONLYDIR) as $dir) {
 
-                if (!in_array($dir, $ignoredFolders)) {
-                    $a_dirs[]["dir"] = basename($dir);
+                    if (!in_array($dir, $ignoredFolders)) {
+                        $a_dirs[]["dir"] = basename($dir);
+                    }
                 }
+
+                foreach ($a_dirs as $key => $value) {
+                    if (file_exists("./" . $value["dir"] . "/danger.txt")) {
+                        $a_dirs[$key]["status"] = "danger";
+                    } elseif (file_exists("./" . $value["dir"] . "/warning.txt")) {
+                        $a_dirs[$key]["status"] = "warning";
+                    } elseif (file_exists("./" . $value["dir"] . "/info.txt")) {
+                        $a_dirs[$key]["status"] = "info";
+                    } elseif (file_exists("./" . $value["dir"] . "/primary.txt")) {
+                        $a_dirs[$key]["status"] = "primary";
+                    } elseif (file_exists("./" . $value["dir"] . "/success.txt")) {
+                        $a_dirs[$key]["status"] = "success";
+                    } else {
+                        $a_dirs[$key]["status"] = "muted";
+                    }
+
+                    // VISIBLE CLASS FOR SEARCH
+                    $a_dirs[$key]["visible"] = "visible";
+
+                    // DESCRIPTIONS FOR EVERY FOLDER
+                    $description_file = "index.txt";
+                    if (file_exists("./" . $value["dir"] . "/$description_file")) {
+                        $a_dirs[$key]["description"] = file_get_contents("./" . $value["dir"] . "/$description_file");
+                    }
+
+                }
+
+                echo json_encode($a_dirs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+
+                ?>
             }
-
-            foreach ($a_dirs as $key => $value) {
-                if (file_exists("./" . $value["dir"] . "/danger.txt")) {
-                    $a_dirs[$key]["status"] = "danger";
-                } elseif (file_exists("./" . $value["dir"] . "/warning.txt")) {
-                    $a_dirs[$key]["status"] = "warning";
-                } elseif (file_exists("./" . $value["dir"] . "/info.txt")) {
-                    $a_dirs[$key]["status"] = "info";
-                } elseif (file_exists("./" . $value["dir"] . "/primary.txt")) {
-                    $a_dirs[$key]["status"] = "primary";
-                } elseif (file_exists("./" . $value["dir"] . "/success.txt")) {
-                    $a_dirs[$key]["status"] = "success";
-                } else {
-                    $a_dirs[$key]["status"] = "muted";
-                }
-
-                // VISIBLE CLASS FOR SEARCH
-                $a_dirs[$key]["visible"] = "visible";
-
-                // DESCRIPTIONS FOR EVERY FOLDER
-                $description_file = "index.txt";
-                if (file_exists("./" . $value["dir"] . "/$description_file")) {
-                    $a_dirs[$key]["description"] = file_get_contents("./" . $value["dir"] . "/$description_file");
-                }
-
-            }
-
-
-
-            echo json_encode($a_dirs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-
-            ?>
-
         },
         methods: {
-            thClassValue: function (status) {
-
+            thClassValue(status) {
                 if (status == "danger") {
                     return ('bg-danger text-white')
                 } else if (status == "warning") {
@@ -189,7 +185,7 @@
                     return ('bg-muted text-black')
                 }
             },
-            search: function (searchstr) {
+            search(searchstr) {
                 //console.log("DEBUG methods search:" + searchstr);
                 //this.dirs[0]['dir']="kk";
                 return this.dirs.map(function (element) {
@@ -199,10 +195,11 @@
                         return element.visible = "visible";
                     }
                 })
-
             }
         }
-    })
+    });
+
+    app.mount('#app');
 </script>
 
 
